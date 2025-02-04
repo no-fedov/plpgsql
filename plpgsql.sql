@@ -51,12 +51,10 @@ $$;
 
 do $$
 	begin
-		create view company_bid as (
+		create or replace view company_bid as (
 			select * 
 			from bid 
 			where is_company = true
 		);
-		exception when duplicate_table then
-			raise notice 'Представление company_bid (заявки команий) уже существует';
 	end;
 $$;
